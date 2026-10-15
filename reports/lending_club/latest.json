@@ -1,0 +1,2042 @@
+{
+  "run_id": "36819472-7e52-4654-9c64-8f1fc0128fa1",
+  "run_at": "2026-10-15T18:07:59.737836+00:00",
+  "model_name": "lending_club_prepayment",
+  "model_version": "2016.01",
+  "overall_severity": "critical",
+  "n_results": 131,
+  "severity_counts": {
+    "ok": 98,
+    "warning": 25,
+    "critical": 8,
+    "error": 0
+  },
+  "category_worst_severity": {
+    "data_drift": "critical",
+    "prediction_drift": "ok",
+    "performance": "warning",
+    "data_quality": "critical"
+  },
+  "reference_rows": 791538,
+  "current_rows": 38154,
+  "metadata": {
+    "window_start": "2017-12-01T00:00:00",
+    "window_rows": 38154
+  },
+  "results": [
+    {
+      "kpi": "schema_conformity",
+      "category": "data_quality",
+      "column": null,
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": null,
+      "critical_threshold": 1.0,
+      "message": null,
+      "detail_violations": [],
+      "thresholds": {
+        "warning": null,
+        "critical": 1.0
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "loan_amnt",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "term_months",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "int_rate",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "installment",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "annual_inc",
+      "value": 0.0019132987366986423,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 2.5267264490144505e-05,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "dti",
+      "value": 0.005032237773234785,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 1.3896995469579478e-05,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "fico",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "emp_length_years",
+      "value": 0.08431619227341826,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 0.052806056057953,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "open_acc",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "total_acc",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "revol_bal",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "revol_util",
+      "value": 0.004167321905960057,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 0.004842471239536194,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "mort_acc",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "pub_rec",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "pub_rec_bankruptcies",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "inq_last_6mths",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "loan_to_income",
+      "value": 0.0019132987366986423,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 2.5267264490144505e-05,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "installment_to_income",
+      "value": 0.0019132987366986423,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 2.5267264490144505e-05,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "rate_spread",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "credit_history_years",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "mort_acc_missing",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "term_x_rate",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "grade",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "home_ownership",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "purpose",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "verification_status",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "application_type",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "missing_rate",
+      "category": "data_quality",
+      "column": "fico_band",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_reference_rate": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "unseen_categories_rate",
+      "category": "data_quality",
+      "column": "grade",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_unseen_levels_sample": [],
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "unseen_categories_rate",
+      "category": "data_quality",
+      "column": "home_ownership",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_unseen_levels_sample": [],
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "unseen_categories_rate",
+      "category": "data_quality",
+      "column": "purpose",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_unseen_levels_sample": [],
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "unseen_categories_rate",
+      "category": "data_quality",
+      "column": "verification_status",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_unseen_levels_sample": [],
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "unseen_categories_rate",
+      "category": "data_quality",
+      "column": "application_type",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_unseen_levels_sample": [],
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "unseen_categories_rate",
+      "category": "data_quality",
+      "column": "fico_band",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_unseen_levels_sample": [],
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "out_of_range_rate",
+      "category": "data_quality",
+      "column": "loan_amnt",
+      "value": 0.04812077370655764,
+      "severity": "warning",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_lower_bound": 1000.0,
+      "detail_upper_bound": 35000.0,
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "out_of_range_rate",
+      "category": "data_quality",
+      "column": "term_months",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_lower_bound": 36.0,
+      "detail_upper_bound": 60.0,
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "out_of_range_rate",
+      "category": "data_quality",
+      "column": "int_rate",
+      "value": 0.008229805524977723,
+      "severity": "ok",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_lower_bound": 5.32,
+      "detail_upper_bound": 27.31,
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "out_of_range_rate",
+      "category": "data_quality",
+      "column": "installment",
+      "value": 0.011191487131100278,
+      "severity": "warning",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_lower_bound": 33.79,
+      "detail_upper_bound": 1282.79,
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "out_of_range_rate",
+      "category": "data_quality",
+      "column": "annual_inc",
+      "value": 0.006066017173918752,
+      "severity": "ok",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_lower_bound": 11000.0,
+      "detail_upper_bound": 540000.0,
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "out_of_range_rate",
+      "category": "data_quality",
+      "column": "dti",
+      "value": 0.03100468889942574,
+      "severity": "warning",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_lower_bound": 0.48,
+      "detail_upper_bound": 39.75,
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "out_of_range_rate",
+      "category": "data_quality",
+      "column": "fico",
+      "value": 0.0032237773234785345,
+      "severity": "ok",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_lower_bound": 662.0,
+      "detail_upper_bound": 827.0,
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "out_of_range_rate",
+      "category": "data_quality",
+      "column": "emp_length_years",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_lower_bound": 0.5,
+      "detail_upper_bound": 10.0,
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "out_of_range_rate",
+      "category": "data_quality",
+      "column": "open_acc",
+      "value": 0.0033286156104209257,
+      "severity": "ok",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_lower_bound": 2.0,
+      "detail_upper_bound": 39.0,
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "out_of_range_rate",
+      "category": "data_quality",
+      "column": "total_acc",
+      "value": 0.007181422655553808,
+      "severity": "ok",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_lower_bound": 4.0,
+      "detail_upper_bound": 78.0,
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "out_of_range_rate",
+      "category": "data_quality",
+      "column": "revol_bal",
+      "value": 0.0013891073019866855,
+      "severity": "ok",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_lower_bound": 0.0,
+      "detail_upper_bound": 265803.1709999987,
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "out_of_range_rate",
+      "category": "data_quality",
+      "column": "revol_util",
+      "value": 0.0010264508487958942,
+      "severity": "ok",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_lower_bound": 0.0,
+      "detail_upper_bound": 99.7,
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "out_of_range_rate",
+      "category": "data_quality",
+      "column": "mort_acc",
+      "value": 0.0003145148608271741,
+      "severity": "ok",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_lower_bound": 0.0,
+      "detail_upper_bound": 13.0,
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "out_of_range_rate",
+      "category": "data_quality",
+      "column": "pub_rec",
+      "value": 0.00023588614562038057,
+      "severity": "ok",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_lower_bound": 0.0,
+      "detail_upper_bound": 6.0,
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "out_of_range_rate",
+      "category": "data_quality",
+      "column": "pub_rec_bankruptcies",
+      "value": 2.620957173559784e-05,
+      "severity": "ok",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_lower_bound": 0.0,
+      "detail_upper_bound": 3.0,
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "out_of_range_rate",
+      "category": "data_quality",
+      "column": "inq_last_6mths",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_lower_bound": 0.0,
+      "detail_upper_bound": 6.0,
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "out_of_range_rate",
+      "category": "data_quality",
+      "column": "loan_to_income",
+      "value": 0.0706651611039626,
+      "severity": "critical",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_lower_bound": 0.013953488,
+      "detail_upper_bound": 0.5,
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "out_of_range_rate",
+      "category": "data_quality",
+      "column": "installment_to_income",
+      "value": 0.04154302670623145,
+      "severity": "warning",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_lower_bound": 0.0055578449476,
+      "detail_upper_bound": 0.21406251229000012,
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "out_of_range_rate",
+      "category": "data_quality",
+      "column": "rate_spread",
+      "value": 0.008229805524977723,
+      "severity": "ok",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_lower_bound": -8.726412,
+      "detail_upper_bound": 14.602281044999947,
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "out_of_range_rate",
+      "category": "data_quality",
+      "column": "credit_history_years",
+      "value": 0.0044032080515804374,
+      "severity": "ok",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_lower_bound": 3.2443533,
+      "detail_upper_bound": 49.500343,
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "out_of_range_rate",
+      "category": "data_quality",
+      "column": "mort_acc_missing",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_lower_bound": 0.0,
+      "detail_upper_bound": 0.0,
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "out_of_range_rate",
+      "category": "data_quality",
+      "column": "term_x_rate",
+      "value": 0.00788908109241495,
+      "severity": "ok",
+      "warning_threshold": 0.01,
+      "critical_threshold": 0.05,
+      "message": null,
+      "detail_lower_bound": 1.9152,
+      "detail_upper_bound": 16.062,
+      "thresholds": {
+        "warning": 0.01,
+        "critical": 0.05
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "loan_amnt",
+      "value": 0.05687175955268167,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_bins": 10,
+      "detail_n_current": 38154,
+      "detail_n_reference": 791538,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "term_months",
+      "value": 0.00012087947965065813,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_bins": 2,
+      "detail_n_current": 38154,
+      "detail_n_reference": 791538,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "int_rate",
+      "value": 1.3350496056530383,
+      "severity": "critical",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_bins": 10,
+      "detail_n_current": 38154,
+      "detail_n_reference": 791538,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "installment",
+      "value": 0.043957979473447484,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_bins": 10,
+      "detail_n_current": 38154,
+      "detail_n_reference": 791538,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "annual_inc",
+      "value": 0.013641317685739628,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_bins": 10,
+      "detail_n_current": 38081,
+      "detail_n_reference": 791518,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "dti",
+      "value": 0.03165460748009639,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_bins": 10,
+      "detail_n_current": 37962,
+      "detail_n_reference": 791527,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "fico",
+      "value": 0.16264333728054992,
+      "severity": "warning",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_bins": 10,
+      "detail_n_current": 38154,
+      "detail_n_reference": 791538,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "emp_length_years",
+      "value": 0.01953920924824293,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_bins": 8,
+      "detail_n_current": 34937,
+      "detail_n_reference": 749740,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "open_acc",
+      "value": 0.04188964192380896,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_bins": 10,
+      "detail_n_current": 38154,
+      "detail_n_reference": 791538,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "total_acc",
+      "value": 0.10215230139056662,
+      "severity": "warning",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_bins": 10,
+      "detail_n_current": 38154,
+      "detail_n_reference": 791538,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "revol_bal",
+      "value": 0.06743043486283794,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_bins": 10,
+      "detail_n_current": 38154,
+      "detail_n_reference": 791538,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "revol_util",
+      "value": 0.23355703489086838,
+      "severity": "warning",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_bins": 10,
+      "detail_n_current": 37995,
+      "detail_n_reference": 787705,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "mort_acc",
+      "value": 0.050076897292361644,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_bins": 6,
+      "detail_n_current": 38154,
+      "detail_n_reference": 791538,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "pub_rec",
+      "value": 0.002788688589083289,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_bins": 3,
+      "detail_n_current": 38154,
+      "detail_n_reference": 791538,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "pub_rec_bankruptcies",
+      "value": 0.0005618601776027799,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_bins": 3,
+      "detail_n_current": 38154,
+      "detail_n_reference": 791538,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "inq_last_6mths",
+      "value": 0.050059333194194436,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_bins": 7,
+      "detail_n_current": 38154,
+      "detail_n_reference": 791538,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "loan_to_income",
+      "value": 0.07067604969151998,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_bins": 10,
+      "detail_n_current": 38081,
+      "detail_n_reference": 791518,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "installment_to_income",
+      "value": 0.06844016059476624,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_bins": 10,
+      "detail_n_current": 38081,
+      "detail_n_reference": 791518,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "rate_spread",
+      "value": 0.06764617480192131,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_bins": 10,
+      "detail_n_current": 38154,
+      "detail_n_reference": 791538,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "credit_history_years",
+      "value": 0.016995541318596773,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_bins": 10,
+      "detail_n_current": 38154,
+      "detail_n_reference": 791538,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "mort_acc_missing",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_bins": 1,
+      "detail_n_current": 38154,
+      "detail_n_reference": 791538,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "term_x_rate",
+      "value": 0.18665037279168692,
+      "severity": "warning",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_bins": 10,
+      "detail_n_current": 38154,
+      "detail_n_reference": 791538,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "grade",
+      "value": 0.09522412263095391,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_levels": 7,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "home_ownership",
+      "value": 0.012017521066462138,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_levels": 4,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "purpose",
+      "value": 0.09550668646845606,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_levels": 14,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "verification_status",
+      "value": 0.06654203897880215,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_levels": 3,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "application_type",
+      "value": 0.7606482018859975,
+      "severity": "critical",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_levels": 2,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "psi",
+      "category": "data_drift",
+      "column": "fico_band",
+      "value": 0.1516351900398069,
+      "severity": "warning",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_levels": 4,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "loan_amnt",
+      "value": 0.1010659793610087,
+      "severity": "warning",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "term_months",
+      "value": 0.004668923495447287,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "int_rate",
+      "value": 0.3084003149593712,
+      "severity": "critical",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "installment",
+      "value": 0.08887393618503685,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "annual_inc",
+      "value": 0.049569463827293665,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "dti",
+      "value": 0.07542289520469003,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "fico",
+      "value": 0.16999267888860317,
+      "severity": "warning",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "emp_length_years",
+      "value": 0.05921458782014261,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "open_acc",
+      "value": 0.08650802800417369,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "total_acc",
+      "value": 0.1350417493744015,
+      "severity": "warning",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "revol_bal",
+      "value": 0.109609297612602,
+      "severity": "warning",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "revol_util",
+      "value": 0.20302371718801368,
+      "severity": "critical",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "mort_acc",
+      "value": 0.0944278870755355,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "pub_rec",
+      "value": 0.022419570759570455,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "pub_rec_bankruptcies",
+      "value": 0.010065254270642055,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "inq_last_6mths",
+      "value": 0.08804491977959794,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "loan_to_income",
+      "value": 0.1125913648107639,
+      "severity": "warning",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "installment_to_income",
+      "value": 0.11083036195281182,
+      "severity": "warning",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "rate_spread",
+      "value": 0.11010506760866273,
+      "severity": "warning",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "credit_history_years",
+      "value": 0.05531130295437636,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "mort_acc_missing",
+      "value": 0.0,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "term_x_rate",
+      "value": 0.18165287258700663,
+      "severity": "warning",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "grade",
+      "value": 0.1286210747652147,
+      "severity": "warning",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "home_ownership",
+      "value": 0.04650349680685325,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "purpose",
+      "value": 0.1277010121932906,
+      "severity": "warning",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "verification_status",
+      "value": 0.10930705991161256,
+      "severity": "warning",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "application_type",
+      "value": 0.2651460597555873,
+      "severity": "critical",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "js_distance",
+      "category": "data_drift",
+      "column": "fico_band",
+      "value": 0.16393144515456248,
+      "severity": "warning",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "ks_test",
+      "category": "data_drift",
+      "column": "loan_amnt",
+      "value": 0.060018024726365526,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_p_value": 2.0315437509185003e-114,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "ks_test",
+      "category": "data_drift",
+      "column": "int_rate",
+      "value": 0.17445170714525549,
+      "severity": "warning",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_p_value": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "ks_test",
+      "category": "data_drift",
+      "column": "annual_inc",
+      "value": 0.02809958371692911,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_p_value": 2.3471830565198662e-25,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "ks_test",
+      "category": "data_drift",
+      "column": "dti",
+      "value": 0.04941592957644944,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_p_value": 2.575544475221832e-77,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "ks_test",
+      "category": "data_drift",
+      "column": "fico",
+      "value": 0.16986195047067743,
+      "severity": "warning",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_p_value": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "ks_test",
+      "category": "data_drift",
+      "column": "revol_util",
+      "value": 0.2021951894831273,
+      "severity": "critical",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.2,
+      "message": null,
+      "detail_p_value": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.2
+      }
+    },
+    {
+      "kpi": "cramers_v",
+      "category": "data_drift",
+      "column": "grade",
+      "value": 0.05636916955096039,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.3,
+      "message": null,
+      "detail_p_value": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.3
+      }
+    },
+    {
+      "kpi": "cramers_v",
+      "category": "data_drift",
+      "column": "home_ownership",
+      "value": 0.02404499220833384,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.3,
+      "message": null,
+      "detail_p_value": 2.683322978919947e-104,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.3
+      }
+    },
+    {
+      "kpi": "cramers_v",
+      "category": "data_drift",
+      "column": "purpose",
+      "value": 0.0738858418901764,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.3,
+      "message": null,
+      "detail_p_value": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.3
+      }
+    },
+    {
+      "kpi": "cramers_v",
+      "category": "data_drift",
+      "column": "verification_status",
+      "value": 0.05512452615463441,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.3,
+      "message": null,
+      "detail_p_value": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.3
+      }
+    },
+    {
+      "kpi": "cramers_v",
+      "category": "data_drift",
+      "column": "application_type",
+      "value": 0.34672066120471995,
+      "severity": "critical",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.3,
+      "message": null,
+      "detail_p_value": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.3
+      }
+    },
+    {
+      "kpi": "cramers_v",
+      "category": "data_drift",
+      "column": "fico_band",
+      "value": 0.0904410604271187,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.3,
+      "message": null,
+      "detail_p_value": 0.0,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.3
+      }
+    },
+    {
+      "kpi": "prediction_drift",
+      "category": "prediction_drift",
+      "column": "score",
+      "value": 0.017606098276069508,
+      "severity": "ok",
+      "warning_threshold": 0.1,
+      "critical_threshold": 0.25,
+      "message": null,
+      "detail_mean_current": 0.14153272687151836,
+      "detail_mean_reference": 0.1335438567788507,
+      "detail_n_current": 38154,
+      "detail_n_reference": 791538,
+      "thresholds": {
+        "warning": 0.1,
+        "critical": 0.25
+      }
+    },
+    {
+      "kpi": "auc",
+      "category": "performance",
+      "column": null,
+      "value": 0.6416266305818727,
+      "severity": "ok",
+      "warning_threshold": 0.61,
+      "critical_threshold": 0.58,
+      "message": null,
+      "detail_n_labelled": 38154,
+      "detail_reference_value": 0.6454192574893277,
+      "thresholds": {
+        "warning": 0.61,
+        "critical": 0.58
+      }
+    },
+    {
+      "kpi": "brier_score",
+      "category": "performance",
+      "column": null,
+      "value": 0.13400277256177612,
+      "severity": "ok",
+      "warning_threshold": 0.135,
+      "critical_threshold": 0.145,
+      "message": null,
+      "detail_n_labelled": 38154,
+      "detail_reference_value": 0.11190159449481799,
+      "thresholds": {
+        "warning": 0.135,
+        "critical": 0.145
+      }
+    },
+    {
+      "kpi": "calibration_error",
+      "category": "performance",
+      "column": null,
+      "value": 0.024504910073493973,
+      "severity": "warning",
+      "warning_threshold": 0.02,
+      "critical_threshold": 0.04,
+      "message": null,
+      "detail_n_labelled": 38154,
+      "detail_reference_value": 0.001034993074229783,
+      "thresholds": {
+        "warning": 0.02,
+        "critical": 0.04
+      }
+    },
+    {
+      "kpi": "level_bias",
+      "category": "performance",
+      "column": null,
+      "value": 0.024504910073493952,
+      "severity": "warning",
+      "warning_threshold": 0.02,
+      "critical_threshold": 0.04,
+      "message": null,
+      "detail_mean_prediction": 0.14153272687151836,
+      "detail_n_labelled": 38154,
+      "detail_observed_rate": 0.1660376369450123,
+      "detail_reference_value": 7.954475082949664e-05,
+      "detail_signed_bias": -0.024504910073493952,
+      "thresholds": {
+        "warning": 0.02,
+        "critical": 0.04
+      }
+    },
+    {
+      "kpi": "performance_degradation",
+      "category": "performance",
+      "column": null,
+      "value": 0.005876222104385658,
+      "severity": "ok",
+      "warning_threshold": 0.05,
+      "critical_threshold": 0.1,
+      "message": null,
+      "detail_current_value": 0.6416266305818727,
+      "detail_reference_value": 0.6454192574893277,
+      "thresholds": {
+        "warning": 0.05,
+        "critical": 0.1
+      }
+    }
+  ]
+}

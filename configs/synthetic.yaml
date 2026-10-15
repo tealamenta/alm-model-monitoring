@@ -1,0 +1,42 @@
+# Configuration de monitoring du modèle de dépôt synthétique livré avec le framework
+# (`alm_monitoring.data.synthetic.make_dataset`). Utilisée par la suite de tests et pour
+# vérifier une installation sans données réelles.
+
+model:
+  name: synthetic_deposit_model
+  version: "1.0.0"
+  task: binary_classification
+  target: y
+  prediction: score
+  timestamp: date
+  features:
+    numeric: [age, balance, rate_spread, tenure_months]
+    categorical: [segment, product, channel]
+
+min_sample_size: 100
+
+kpis:
+  - name: schema_conformity
+  - name: label_coverage
+  - name: missing_rate
+  - name: unseen_categories_rate
+  - name: out_of_range_rate
+  - name: psi
+  - name: js_distance
+  - name: ks_test
+  - name: cramers_v
+  - name: prediction_drift
+  - name: auc
+  - name: brier_score
+    # Un taux de base ~20 % place le Brier irréductible du vrai modèle vers 0,10.
+    thresholds: {warning: 0.12, critical: 0.16}
+  - name: log_loss
+  - name: calibration_error
+    # L'ECE est biaisée vers le haut sur les petites fenêtres (~0,03 de bruit à n=500) : seuil assoupli.
+    thresholds: {warning: 0.05, critical: 0.10}
+  - name: performance_degradation
+
+alerts:
+  min_severity: warning
+  dispatchers:
+    - type: logging

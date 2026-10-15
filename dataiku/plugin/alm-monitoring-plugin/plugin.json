@@ -1,0 +1,13 @@
+{
+  "id": "alm-monitoring",
+  "version": "0.1.0",
+  "meta": {
+    "label": "ALM Model Monitoring",
+    "description": "KPIs de monitoring (dérive des données, dérive des prédictions, performance, calibration, qualité des données) pour les modèles comportementaux ALM, avec seuils configurables. Alimente un dataset exploitable par les métriques & checks et les dashboards.",
+    "author": "Mohamed",
+    "icon": "icon-dashboard",
+    "tags": ["MLOps", "Monitoring", "ALM", "Drift"],
+    "licenseInfo": "MIT",
+    "url": "https://github.com/tealamenta/alm-model-monitoring"
+  }
+}

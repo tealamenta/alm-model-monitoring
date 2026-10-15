@@ -1,0 +1,40 @@
+{
+  "meta": {
+    "label": "ALM Monitoring KPIs",
+    "description": "Compare une fenêtre courante à une fenêtre de référence et produit la table des KPIs (dérive, performance, calibration, qualité des données) avec leur statut OK / WARNING / CRITICAL. Un utilisateur métier peut ainsi monitorer un nouveau modèle sans écrire de code : il déclare les colonnes et les seuils dans le formulaire.",
+    "icon": "icon-dashboard"
+  },
+  "kind": "PYTHON",
+  "selectableFromDataset": "reference",
+  "inputRoles": [
+    {"name": "reference", "label": "Fenêtre de référence (scorée)", "arity": "UNARY", "required": true, "acceptsDataset": true},
+    {"name": "current", "label": "Fenêtre courante (scorée)", "arity": "UNARY", "required": true, "acceptsDataset": true}
+  ],
+  "outputRoles": [
+    {"name": "kpis", "label": "Table des KPIs (format long)", "arity": "UNARY", "required": true, "acceptsDataset": true}
+  ],
+  "params": [
+    {"name": "model_name", "label": "Nom du modèle", "type": "STRING", "mandatory": true},
+    {"name": "model_version", "label": "Version", "type": "STRING", "defaultValue": "1.0"},
+    {"name": "task", "label": "Type de modèle", "type": "SELECT", "defaultValue": "binary_classification",
+     "selectChoices": [{"value": "binary_classification", "label": "Classification binaire"}, {"value": "regression", "label": "Régression"}]},
+    {"name": "target", "label": "Colonne cible (peut être vide dans la fenêtre courante)", "type": "COLUMN", "columnRole": "reference", "mandatory": true},
+    {"name": "prediction", "label": "Colonne de score / prédiction", "type": "COLUMN", "columnRole": "reference", "mandatory": true},
+    {"name": "timestamp", "label": "Colonne de date (découpe temporelle)", "type": "COLUMN", "columnRole": "reference", "mandatory": false},
+    {"name": "numeric_features", "label": "Features numériques", "type": "COLUMNS", "columnRole": "reference", "mandatory": true},
+    {"name": "categorical_features", "label": "Features catégorielles", "type": "COLUMNS", "columnRole": "reference", "mandatory": false},
+    {"name": "period", "label": "Découpe de la fenêtre courante", "type": "SELECT", "defaultValue": "MS",
+     "selectChoices": [{"value": "", "label": "Fenêtre entière"}, {"value": "MS", "label": "Mensuelle"}, {"value": "QS", "label": "Trimestrielle"}]},
+    {"name": "min_sample_size", "label": "Taille minimale d'échantillon", "type": "INT", "defaultValue": 500},
+    {"name": "psi_warning", "label": "PSI – seuil d'avertissement", "type": "DOUBLE", "defaultValue": 0.10},
+    {"name": "psi_critical", "label": "PSI – seuil critique", "type": "DOUBLE", "defaultValue": 0.25},
+    {"name": "auc_warning", "label": "AUC – seuil d'avertissement (classification)", "type": "DOUBLE", "defaultValue": 0.70},
+    {"name": "auc_critical", "label": "AUC – seuil critique", "type": "DOUBLE", "defaultValue": 0.65},
+    {"name": "level_bias_warning", "label": "Biais de niveau – avertissement (points de probabilité)", "type": "DOUBLE", "defaultValue": 0.02},
+    {"name": "level_bias_critical", "label": "Biais de niveau – critique", "type": "DOUBLE", "defaultValue": 0.04},
+    {"name": "missing_warning", "label": "Taux de manquants – avertissement", "type": "DOUBLE", "defaultValue": 0.05},
+    {"name": "missing_critical", "label": "Taux de manquants – critique", "type": "DOUBLE", "defaultValue": 0.20},
+    {"name": "append", "label": "Ajouter à l'historique (append)", "type": "BOOLEAN", "defaultValue": true}
+  ],
+  "resourceKeys": []
+}

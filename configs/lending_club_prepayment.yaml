@@ -1,0 +1,138 @@
+# Configuration de monitoring du modèle de remboursement anticipé (Lending Club).
+#
+# Référence   : prêts émis de janvier 2013 à décembre 2015 (scores hors-pli du champion)
+# Surveillance: prêts émis de janvier 2016 à décembre 2017, évalués mois par mois
+#               (`--by-period MS`), comme le ferait un scénario Dataiku mensuel.
+#
+# Chaque clé est validée par `alm_monitoring.config.MonitoringConfig` ; les clés inconnues
+# sont rejetées. Vérification : `alm-monitor validate-config configs/lending_club_prepayment.yaml`.
+
+model:
+  name: lending_club_prepayment
+  version: "2016.01"
+  task: binary_classification
+  target: prepaid_12m
+  prediction: score
+  timestamp: issue_d
+  features:
+    numeric:
+      - loan_amnt
+      - term_months
+      - int_rate
+      - installment
+      - annual_inc
+      - dti
+      - fico
+      - emp_length_years
+      - open_acc
+      - total_acc
+      - revol_bal
+      - revol_util
+      - mort_acc
+      - pub_rec
+      - pub_rec_bankruptcies
+      - inq_last_6mths
+      # Features dérivées métier (voir `engineer_features`) : surveillées même si le champion
+      # n'en utilise qu'une partie, car `rate_spread` (écart au taux de marché) est le
+      # moteur économique du remboursement anticipé.
+      - loan_to_income
+      - installment_to_income
+      - rate_spread
+      - credit_history_years
+      - mort_acc_missing
+      - term_x_rate
+    categorical:
+      - grade
+      - home_ownership
+      - purpose
+      - verification_status
+      - application_type
+      - fico_band
+
+# Entre 20 000 et 45 000 prêts par mois : les statistiques sont stables, on peut exiger
+# un échantillon conséquent avant de produire un KPI.
+min_sample_size: 1000
+
+kpis:
+  # ---------------------------------------------------------------- qualité des données
+  # Indicateurs avancés : disponibles immédiatement, sans attendre la cible.
+  - name: schema_conformity
+  - name: label_coverage
+    # Assiette des KPI de performance. Sur l'historique Lending Club, la cible à horizon
+    # fixe est connue pour 100 % des lignes des cohortes mûres (couverture 1,0). En
+    # production, une fenêtre de moins de 12 mois a une couverture nulle : CRITICAL, ce
+    # qui dit exactement « performance non encore mesurable ».
+    thresholds:
+      warning: 0.95
+      critical: 0.80
+  - name: missing_rate
+    # `emp_length_years` et `mort_acc` ont respectivement 6 % et 3 % de manquants en
+    # référence ; on alerte sur une hausse, pas sur le niveau structurel.
+    thresholds:
+      warning: 0.10
+      critical: 0.20
+  - name: unseen_categories_rate
+  - name: out_of_range_rate
+    params:
+      lower_q: 0.001
+      upper_q: 0.999
+
+  # ------------------------------------------------------------------ dérive des données
+  - name: psi
+    params:
+      bins: 10
+  - name: js_distance
+  - name: ks_test
+    # Variables de tarification et de risque : celles que la politique d'octroi fait bouger.
+    columns: [int_rate, fico, dti, loan_amnt, annual_inc, revol_util]
+  - name: cramers_v
+
+  # ------------------------------------------------------------ dérive des prédictions
+  # Signal le plus précoce : la cible n'est connue que 12 mois après l'émission.
+  - name: prediction_drift
+    thresholds:
+      warning: 0.10
+      critical: 0.25
+
+  # ------------------------------------------------------------------- performance
+  # Seuils ancrés sur la performance hors temps du champion (AUC 0,640, Brier 0,127,
+  # ECE 0,019) : un comportement de remboursement anticipé reste peu prévisible, les
+  # seuils génériques "AUC 0,75" seraient hors de propos.
+  - name: auc
+    thresholds:
+      warning: 0.61
+      critical: 0.58
+  - name: brier_score
+    thresholds:
+      warning: 0.135
+      critical: 0.145
+  - name: calibration_error
+    # En ALM, c'est l'indicateur décisif : un écart de niveau de 3 points sur le taux de
+    # remboursement anticipé fausse directement l'écoulement projeté des actifs.
+    thresholds:
+      warning: 0.02
+      critical: 0.04
+  - name: level_bias
+    # Moyenne prédite − taux observé, en valeur absolue : 2 points = avertissement,
+    # 4 points = critique (ordre de grandeur de l'erreur tolérée sur un écoulement).
+    thresholds:
+      warning: 0.02
+      critical: 0.04
+  - name: log_loss
+    enabled: false
+  - name: performance_degradation
+    thresholds:
+      warning: 0.05
+      critical: 0.10
+
+alerts:
+  min_severity: warning
+  dispatchers:
+    - type: logging
+    # Décommenter pour notifier un canal Teams / Slack / Dataiku. Le jeton est lu dans la
+    # variable d'environnement indiquée, jamais dans le YAML.
+    # - type: webhook
+    #   url: https://hooks.example.com/alm-monitoring
+    #   allowed_hosts: [hooks.example.com]
+    #   timeout_s: 5
+    #   auth_token_env: ALM_WEBHOOK_TOKEN

@@ -1,0 +1,42 @@
+# Caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.coverage
+coverage.xml
+htmlcov/
+
+# Environnements
+.venv/
+.env
+.python-version
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# Données : brutes et préparées sont reproductibles via scripts/ ; l'échantillon est versionné
+data/raw/
+data/processed/
+!data/sample/
+
+# Modèles et traces MLflow
+models/
+mlruns/
+mlflow.db
+
+# Sorties de démonstration
+reports/lending_club_demo/
+reports/*.json
+
+# Notebooks
+.ipynb_checkpoints/
+
+# OS / IDE
+.DS_Store
+.vscode/
+.idea/

@@ -1,0 +1,72 @@
+{
+  "_comment": "Définition d'un scénario step-based équivalent au script 02_scenario_monitoring.py. À reproduire dans l'interface (Scenarios → New → Sequence of steps) ou à adapter dans un export de projet. Les identifiants (MES, canal) sont des variables de projet.",
+  "id": "ALM_MONITORING_MONTHLY",
+  "name": "ALM – Monitoring mensuel du modèle de remboursement anticipé",
+  "type": "step_based",
+  "active": true,
+  "triggers": [
+    {
+      "type": "temporal",
+      "name": "Chaque 2 du mois à 06:00",
+      "active": true,
+      "params": {"frequency": "Monthly", "dayOfMonth": 2, "hour": 6, "minute": 0, "timezone": "Europe/Luxembourg"}
+    },
+    {
+      "type": "dataset_modified",
+      "name": "Nouvelle fenêtre courante disponible",
+      "active": true,
+      "params": {"datasets": [{"datasetName": "lc_current"}]}
+    }
+  ],
+  "params": {
+    "steps": [
+      {
+        "type": "build_flowitem",
+        "name": "1. Évaluation native (Model Evaluation Store)",
+        "params": {"builds": [{"type": "MODEL_EVALUATION_STORE", "itemId": "${alm_mes_id}"}], "jobType": "RECURSIVE_BUILD"}
+      },
+      {
+        "type": "build_flowitem",
+        "name": "2. KPIs ALM (recette Python → monitoring_kpis)",
+        "params": {"builds": [{"type": "DATASET", "itemId": "monitoring_kpis"}], "jobType": "RECURSIVE_FORCED_BUILD"}
+      },
+      {
+        "type": "compute_metrics",
+        "name": "3. Métriques monitoring_kpis",
+        "params": {"computes": [{"type": "DATASET", "itemId": "monitoring_kpis"}]}
+      },
+      {
+        "type": "check_dataset",
+        "name": "4. Checks de gravité (check Python personnalisé)",
+        "params": {"checks": [{"type": "DATASET", "itemId": "monitoring_kpis"}]},
+        "resetScenarioOnFail": false
+      },
+      {
+        "type": "custom_python",
+        "name": "5. Synthèse MES + KPIs ALM, variables, alerte",
+        "params": {"script": "<< contenu de dataiku/recipes/02_scenario_monitoring.py, sans les étapes 1-2 déjà exécutées >>"},
+        "runConditionType": "RUN_IF_STATUS_MATCH",
+        "runConditionStatuses": ["SUCCESS", "WARNING"]
+      }
+    ]
+  },
+  "reporters": [
+    {
+      "type": "mail",
+      "name": "Alerte équipe ALM-MODE",
+      "active": true,
+      "phase": "END",
+      "runConditionType": "RUN_IF_STATUS_MATCH",
+      "runConditionStatuses": ["WARNING", "FAILED"],
+      "messaging": {
+        "type": "mail-scenario",
+        "channelId": "${alm_messaging_channel}",
+        "configuration": {
+          "recipient": "${alm_alert_recipients}",
+          "subject": "[ALM monitoring] ${alm_overall_severity} – ${scenarioName}",
+          "body": "Résultat : ${outcome}\nGravité globale : ${alm_overall_severity}\nDépassements : ${alm_n_breaches}\nAUC natif (MES) : ${alm_auc_native}\nDrift natif (MES) : ${alm_data_drift_native}\nDashboard : ${dssURL}/projects/${projectKey}/dashboards/"
+        }
+      }
+    }
+  ]
+}

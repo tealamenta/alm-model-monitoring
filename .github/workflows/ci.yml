@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  qualite:
+    name: Lint, types, tests (Python ${{ matrix.python }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Installer uv
+        uses: astral-sh/setup-uv@v3
+      - name: Installer les dépendances
+        run: uv sync --all-extras --group dev
+      - name: Lint (ruff)
+        run: |
+          uv run ruff check .
+          uv run ruff format --check .
+      - name: Types (mypy strict)
+        run: uv run mypy
+      - name: Sécurité (bandit)
+        run: uv run bandit -q -c pyproject.toml -r src scripts dataiku
+      - name: Tests (sans PySpark)
+        run: uv run pytest -m "not slow"
+      - name: Démo de bout en bout sur l'échantillon
+        run: uv run make demo
+  spark:
+    name: Backend PySpark
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: astral-sh/setup-uv@v3
+      - run: uv sync --all-extras --group dev
+      - run: uv run pytest -m slow --no-cov

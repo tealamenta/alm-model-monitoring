@@ -1,0 +1,116 @@
+# Configuration de monitoring du modèle de propension au dépôt à terme (Bank Marketing).
+# Second modèle du dépôt : il illustre que le même framework s'applique à un autre modèle
+# sans changer de code (seul ce fichier diffère).
+#
+# Référence   : mai 2008 - juin 2009 (échantillon de développement, scores hors-pli)
+# Surveillance: juillet 2009 - novembre 2010, mois par mois (`--by-period MS`)
+#
+# Cas de « régime extrême » : la période traverse la crise de 2008 puis les taux zéro ; les
+# variables macro (`euribor3m`, `emp_var_rate`, `nr_employed`) sortent du support de la
+# référence et le taux de souscription passe de 7 % à 46 %. Presque toutes les fenêtres sont
+# donc en dépassement : ce n'est pas de la fatigue d'alerte, c'est un modèle à ré-estimer.
+# Chaque clé est validée par `alm_monitoring.config.MonitoringConfig`.
+
+model:
+  name: term_deposit_propensity
+  version: "2009.07"
+  task: binary_classification
+  target: y
+  prediction: score
+  timestamp: date
+  features:
+    numeric:
+      - age
+      - campaign
+      - pdays
+      - previous
+      - emp_var_rate
+      - cons_price_idx
+      - cons_conf_idx
+      - euribor3m
+      - nr_employed
+    categorical:
+      - job
+      - marital
+      - education
+      - default
+      - housing
+      - loan
+      - contact
+      - day_of_week
+      - poutcome
+
+# Entre ~130 et ~770 appels par mois après mi-2009 : les fenêtres plus petites sont
+# ignorées plutôt que de produire des résultats bruités.
+min_sample_size: 100
+
+kpis:
+  # ---------------------------------------------------------------- qualité des données
+  # Indicateurs avancés : disponibles immédiatement, sans cible.
+  - name: schema_conformity
+  - name: label_coverage
+  - name: missing_rate
+  - name: unseen_categories_rate
+  - name: out_of_range_rate
+    params:
+      # Tolère les queues à 0,5 % de la référence pour ne pas alerter sur des extrêmes légitimes.
+      lower_q: 0.005
+      upper_q: 0.995
+
+  # ------------------------------------------------------------------ dérive des données
+  - name: psi
+    params:
+      bins: 10
+  - name: js_distance
+  - name: ks_test
+    # Les variables macro sont celles qui continuent de bouger dans le régime de taux
+    # zéro ; le test KS leur est restreint pour garder le rapport lisible.
+    columns: [emp_var_rate, cons_price_idx, cons_conf_idx, euribor3m, nr_employed]
+  - name: cramers_v
+
+  # ------------------------------------------------------------ dérive des prédictions
+  - name: prediction_drift
+    thresholds:
+      warning: 0.10
+      critical: 0.25
+
+  # ------------------------------------------------------------------- performance
+  # Nécessitent la cible `y`. L'AUC de développement (hors-pli) est ~0,69 sans la variable
+  # fuyante `duration` : les seuils absolus sont ancrés sur ce niveau (-0,05 / -0,12) plutôt
+  # que sur les défauts du framework, conçus pour des modèles plus discriminants.
+  - name: auc
+    thresholds:
+      warning: 0.64
+      critical: 0.57
+  # Le taux de base de la fenêtre de surveillance est ~45 % : le Brier irréductible y est
+  # bien plus élevé que sur la référence à 7 % ; les seuils reflètent ce régime.
+  - name: brier_score
+    thresholds:
+      warning: 0.22
+      critical: 0.26
+  - name: calibration_error
+    thresholds:
+      warning: 0.05
+      critical: 0.10
+  - name: level_bias
+    thresholds:
+      warning: 0.05
+      critical: 0.10
+  - name: log_loss
+    enabled: false
+  - name: performance_degradation
+    thresholds:
+      warning: 0.05
+      critical: 0.10
+
+alerts:
+  min_severity: warning
+  dispatchers:
+    - type: logging
+    # Décommenter pour notifier un webhook Teams / Slack / Dataiku. Le jeton est lu dans la
+    # variable d'environnement `auth_token_env`, jamais dans le YAML.
+    # - type: webhook
+    #   url: https://hooks.example.com/alm-monitoring
+    #   allowed_hosts: [hooks.example.com]
+    #   timeout_s: 5
+    #   auth_token_env: ALM_WEBHOOK_TOKEN
