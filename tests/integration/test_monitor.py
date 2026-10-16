@@ -301,6 +301,21 @@ class TestRunOverTime:
         assert all(r.metadata["unparsed_timestamp_rows"] == 7 for r in reports)
         assert "7 ligne(s) sans horodatage" in caplog.text
 
+    def test_invalid_reference_is_rejected_before_any_window(
+        self,
+        synthetic_config: MonitoringConfig,
+        reference_df: pd.DataFrame,
+        monthly_current: pd.DataFrame,
+    ) -> None:
+        """Référence vide ou hors contrat : exception à l'entrée, jamais un rapport
+        data_availability, même si toutes les fenêtres sont trop petites."""
+        monitor = ModelMonitor(synthetic_config)
+        tiny = monthly_current.head(5)  # toutes les fenêtres < min_sample_size
+        with pytest.raises(SchemaValidationError, match="vide"):
+            next(monitor.run_over_time(reference_df.iloc[0:0], tiny))
+        with pytest.raises(SchemaValidationError, match="colonnes obligatoires"):
+            next(monitor.run_over_time(reference_df.drop(columns=["age"]), tiny))
+
     def test_quarterly_frequency(
         self,
         synthetic_config: MonitoringConfig,

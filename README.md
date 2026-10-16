@@ -7,7 +7,7 @@
 > entraîné et surveillé sur 1,9 million de prêts réels (Lending Club, 2013-2017).
 
 ![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue)
-![Tests](https://img.shields.io/badge/tests-327%20passed-success)
+![Tests](https://img.shields.io/badge/tests-328%20passed-success)
 ![Couverture](https://img.shields.io/badge/couverture-97%25-success)
 ![Typage](https://img.shields.io/badge/typage-mypy%20strict-informational)
 ![Licence](https://img.shields.io/badge/licence-MIT-lightgrey)
@@ -248,7 +248,7 @@ configuration diffère.
 │   ├── dataiku/             adaptateurs DSS (import paresseux du SDK)
 │   ├── viz.py               figures Plotly
 │   └── cli.py               alm-monitor
-└── tests/                   unit · integration · security (327 tests, 97 % de couverture avec PySpark, 93 % sans)
+└── tests/                   unit · integration · security (328 tests, 97 % de couverture avec PySpark, 93 % sans)
 ```
 
 ## Qualité

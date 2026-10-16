@@ -133,9 +133,12 @@ class ModelMonitor:
         absence de dérive.
 
         Raises:
-            SchemaValidationError: Si aucune colonne d'horodatage n'est configurée ou
-                présente.
+            SchemaValidationError: Si le dataset de référence viole le contrat, ou si
+                aucune colonne d'horodatage n'est configurée ou présente.
         """
+        # La référence est un contrat : rejetée à l'entrée, une fois, avant tout découpage,
+        # et non au détour de la première fenêtre (même si toutes sont trop petites).
+        self._validate_reference(reference)
         ts_col = self.config.model.timestamp
         if not ts_col:
             raise SchemaValidationError(

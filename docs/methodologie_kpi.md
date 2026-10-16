@@ -61,7 +61,11 @@ pas tiré au hasard (prêts plus anciens, plus mûrs). `label_coverage` = part d
 labellisées, seuils 0,95 / 0,80 ; chaque KPI de performance répète l'assiette dans ses
 détails (`n_total`, `n_labelled`, `excluded_rate`). Pour une cible différée, une fenêtre
 récente a une couverture nulle : CRITICAL, c'est-à-dire « performance non encore
-mesurable », ce qui est l'information juste.
+mesurable », ce qui est l'information juste. Une couverture faible n'est pas en soi une
+preuve de biais : il faut vérifier si les labels manquants dépendent du profil des prêts
+ou de la période (mécanisme MCAR / MNAR), ce que fait le contrôle des manquants de l'audit
+de qualité (`data_audit.check_missing`) ; c'est la lecture conjointe des deux qui dit si
+la performance mesurée est représentative.
 
 **Découpage temporel.** Les fenêtres mensuelles sont construites sur des positions de
 lignes et non sur les étiquettes de l'index pandas : un index dupliqué (fréquent après un
