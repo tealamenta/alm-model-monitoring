@@ -4,7 +4,8 @@
 > conçu pour Dataiku : dérive des données, dérive des prédictions, dégradation de la
 > performance et qualité des données en entrée, avec seuils justifiés, alertes et
 > documentation de bout en bout. Cas d'application : un modèle de **remboursement anticipé**
-> entraîné et surveillé sur 1,9 million de prêts réels (Lending Club, 2013-2017).
+> entraîné sur 791 538 prêts (2013-2015) et surveillé sur 877 986 prêts (2016-2017),
+> soit 1,7 million de prêts réels (Lending Club).
 
 ![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue)
 ![Tests](https://img.shields.io/badge/tests-328%20passed-success)
@@ -41,10 +42,11 @@ Aucune dérive n'est simulée : tout est réel.
 
 ![Synthèse du monitoring 2016-2017](reports/lending_club/figures/synthese.png)
 
-* **Le classement tient, le niveau dérive.** L'AUC reste à 0,64 sur 24 mois, mais le
-  modèle sous-estime les remboursements anticipés de 1 point en janvier 2016, de 3 points
-  fin 2016. Un monitoring limité à l'AUC n'aurait rien vu ; les KPIs de **calibration** et de
-  **biais de niveau** passent en avertissement dès juin 2016.
+* **Le classement tient, le niveau dérive.** L'AUC reste autour de 0,64 sur 24 mois, mais
+  le modèle sous-estime de plus en plus les remboursements anticipés : moins de 1 point au
+  premier semestre 2016, près de 4 points fin 2016 (4,2 points en janvier 2017, seuil
+  critique). Un monitoring limité à l'AUC n'aurait rien vu ; les KPIs de **calibration** et
+  de **biais de niveau** passent en avertissement dès juillet 2016.
 * **Le signal avancé précède la cible.** La dérive des prédictions monte en septembre-
   octobre 2016, douze mois avant que les remboursements de ces cohortes soient observables.
 * **Les dérives de données sont identifiées et nommées.** `int_rate` (changements de grille
@@ -216,7 +218,7 @@ les KPIs de dérive avec les mêmes formules pour les recettes Spark sur l'histo
 
 | Modèle | Données | Rôle | Config |
 |---|---|---|---|
-| Remboursement anticipé à 12 mois | Lending Club, 1,9 M prêts 2007-2017 | Cas principal | `configs/lending_club_prepayment.yaml` |
+| Remboursement anticipé à 12 mois | Lending Club, 1,7 M prêts modélisés (2013-2017) | Cas principal | `configs/lending_club_prepayment.yaml` |
 | Propension au dépôt à terme | Bank Marketing (UCI), 41 188 appels 2008-2010 | Second cas : régime de crise extrême, le même YAML suffit | `configs/bank_marketing.yaml` |
 
 Le second cas illustre le « s'applique nativement aux futurs modèles » : seul le fichier de
